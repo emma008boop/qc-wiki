@@ -3,7 +3,10 @@ import './App.scss';
 import DocsLayout from './layouts/DocsLayout';
 
 function Home() {
-    return <h1>Home funciona</h1>;
+  return (
+      <>
+      </>
+  );
 }
 
 function App() {

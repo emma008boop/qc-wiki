@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import LeftSidebar from "../components/LeftSidebar/LeftSidebar";
 import Navbar from "../components/Navbar/Navbar";
 import "./DocsLayout.scss";
 
@@ -9,11 +10,11 @@ function DocsLayout() {
 
             
             <div className="layout__body">
-                {/* <LeftSidebar /> */}
+                <LeftSidebar />
 
                 <main className="layout__content">
-                <Outlet />
-                </main>
+                    <Outlet />
+                </main> 
 
                 {/* <RightSidebar /> */}
             </div>
