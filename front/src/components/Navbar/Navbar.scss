@@ -1,0 +1,55 @@
+@use "../../styles/variables" as *;
+
+.navbar {
+  width: 100%;
+  background-color: $color-background;
+  border-bottom: 1px solid $color-gray-200;
+
+  &__container {
+    width: 100%;
+    max-width: $container-max-width;
+    min-height: 64px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    color: $color-text;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    
+    .button {
+      font-size: $font-size-xs;
+      font-family: $font-family-heading;
+      color: $color-black;
+      font-weight: $font-weight-medium;
+      border-radius: $radius-md;
+      padding: 8px 15px;
+      border: none;
+      cursor: pointer;
+    }
+    .button--secondary {
+      background-color: $color-pink;
+      color: $color-white;
+
+    }
+    .button--secondary:hover {
+      transform: scale(1.050);
+      transition: transform 100ms ease-in;
+    }
+    
+  }
+
+
+}
