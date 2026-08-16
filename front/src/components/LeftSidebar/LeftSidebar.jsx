@@ -4,21 +4,40 @@ import SidebarGroup from "./SidebarGroup/SidebarGroup";
 function LeftSidebar() {
   const menuData = [
     {
-      title: "Documentación",
+      title: "Rater QC",
       defaultOpen: true,
       links: [
-        { label: "Introducción", href: "/documentation", isActive: true },
-        { label: "Primeros pasos", href: "/documentation/getting-started" },
-        { label: "Configuración", href: "/documentation/setup" },
+        {
+          label: "Documentación",
+          href: "/documentation",
+          isActive: true,
+        },
+        {
+          label: "Cómo usarlo",
+          href: "/documentation/getting-started",
+        },
+        {
+          label: "Descargar",
+          href: "/documentation/download",
+        },
       ],
     },
     {
       title: "Proyecto",
       defaultOpen: false,
       links: [
-        { label: "Arquitectura", href: "/architecture" },
-        { label: "API", href: "/api" },
-        { label: "Contribuir", href: "/contributing" },
+        {
+          label: "Arquitectura",
+          href: "/architecture",
+        },
+        {
+          label: "API",
+          href: "/api",
+        },
+        {
+          label: "Contribuir",
+          href: "/contributing",
+        },
       ],
     },
   ];
@@ -29,9 +48,9 @@ function LeftSidebar() {
         className="left-sidebar__navigation"
         aria-label="Navegación de documentación"
       >
-        {menuData.map((group, index) => (
+        {menuData.map((group) => (
           <SidebarGroup
-            key={index}
+            key={group.title}
             title={group.title}
             links={group.links}
             defaultOpen={group.defaultOpen}
@@ -41,4 +60,5 @@ function LeftSidebar() {
     </aside>
   );
 }
+
 export default LeftSidebar;

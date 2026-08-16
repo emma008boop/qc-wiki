@@ -8,61 +8,170 @@
 
   padding: $spacing-lg $spacing-md;
 
-  background-color: $color-surface; 
   border-right: 1px solid $color-border;
 
   overflow-y: auto;
+  overflow-x: hidden;
+
+  // ----------------------------------------
+  // Scrollbar
+  // ----------------------------------------
+
+  // Firefox
+  scrollbar-width: none;
+
+  // Chrome / Edge / Safari
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: $radius-full;
+  }
+
+  // Mostrar scrollbar al pasar el cursor
+  &:hover {
+    scrollbar-width: thin;
+    scrollbar-color: $color-gray-300 transparent;
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-gray-300;
+    }
+  }
+
+  // ----------------------------------------
+  // Navigation
+  // ----------------------------------------
 
   &__navigation {
     display: flex;
     flex-direction: column;
-    gap: $spacing-xl;
   }
+
+  // ----------------------------------------
+  // Groups
+  // ----------------------------------------
 
   &__group {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
   }
+
+  // ----------------------------------------
+  // Group button
+  // ----------------------------------------
 
   &__toggle {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
     width: 100%;
-    
-    padding: $spacing-xs $spacing-sm; 
-    background: transparent;
+
+    padding: $spacing-sm;
+
     border: none;
-    border-radius: $radius-md;
-    cursor: pointer;
-    
+    border-radius: $radius-sm;
+
+    background: transparent;
+
     color: $color-text;
     text-align: left;
-    
-    transition: background-color 0.2s ease;
+
+    cursor: pointer;
+
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
 
     &:hover {
-      background-color: $color-gray-200; 
+      background-color: $color-gray-100;
+      color: $color-text;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-blue;
+      outline-offset: 2px;
     }
   }
+
+  // ----------------------------------------
+  // Group title
+  // ----------------------------------------
 
   &__title {
     margin: 0;
-    color: inherit; 
+
+    color: inherit;
+
     font-size: $font-size-sm;
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-medium;
+    line-height: 1.4;
   }
+
+  // ----------------------------------------
+  // Arrow
+  // ----------------------------------------
 
   &__arrow {
-    font-size: $font-size-xs;
-    color: $color-text-muted;
-    transition: transform 0.3s ease;
+    width: 7px;
+    height: 7px;
 
+    margin-right: $spacing-xs;
+
+    border-right: 1.5px solid $color-text-muted;
+    border-bottom: 1.5px solid $color-text-muted;
+
+    // Closed → >
+    transform: rotate(-45deg);
+
+    transition:
+      transform 0.25s ease,
+      border-color 0.2s ease;
+
+    .left-sidebar__toggle:hover & {
+      border-color: $color-blue;
+    }
+
+    // Open → v
     &--open {
-      transform: rotate(180deg);
+      transform: rotate(45deg);
     }
   }
+
+  // ----------------------------------------
+  // Accordion content
+  // ----------------------------------------
+
+  &__content {
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(-4px);
+
+    transition:
+      max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.2s ease,
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &--open {
+      max-height: 300px;
+
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // ----------------------------------------
+  // Links list
+  // ----------------------------------------
 
   &__list {
     display: flex;
@@ -70,46 +179,86 @@
     gap: 2px;
 
     margin: 0;
-    padding: 0;
-    
+    padding: $spacing-xs 0 $spacing-sm;
+
     list-style: none;
   }
+
+  // ----------------------------------------
+  // List item
+  // ----------------------------------------
 
   &__item {
     width: 100%;
   }
 
+  // ----------------------------------------
+  // Links
+  // ----------------------------------------
+
   &__link {
+    position: relative;
+
     display: block;
+
     width: 100%;
 
     padding: $spacing-sm $spacing-md;
 
-    border-radius: $radius-md;
+    border-radius: $radius-sm;
 
-    color: $color-gray-600;
+    color: $color-text-muted;
+
     font-size: $font-size-sm;
     font-weight: $font-weight-regular;
+    line-height: 1.4;
 
     text-decoration: none;
 
     transition:
-      background-color 0.2s ease,
-      color 0.2s ease;
+      color 0.2s ease,
+      background-color 0.2s ease;
 
     &:hover {
-      background-color: $color-gray-200;
+      background-color: $color-gray-100;
       color: $color-text;
     }
 
+    &:focus-visible {
+      outline: 2px solid $color-blue;
+      outline-offset: -2px;
+    }
+
+    // ----------------------------------------
+    // Active link
+    // ----------------------------------------
+
     &--active {
-      background-color: $color-pink; 
-      color: $color-white;
+      background-color: transparent;
+
+      color: $color-blue;
       font-weight: $font-weight-medium;
 
+      &::before {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        top: 50%;
+
+        width: 2px;
+        height: 18px;
+
+        border-radius: $radius-full;
+
+        background-color: $color-blue;
+
+        transform: translateY(-50%);
+      }
+
       &:hover {
-        background-color: $color-pink; 
-        color: $color-white;
+        background-color: $color-gray-100;
+        color: $color-blue;
       }
     }
   }
