@@ -1,0 +1,208 @@
+// GeneralContentLayout.scss
+
+@use "../../styles/variables" as *;
+
+.general-content-layout {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-lg;
+  color: $color-text;
+  font-family: $font-family-base;
+  background-color: $color-background;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__title {
+    margin: 0;
+    color: $color-text;
+    font-family: $font-family-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    line-height: 1.25;
+  }
+
+  &__description {
+    max-width: 760px;
+    margin: 0;
+    color: $color-text-muted;
+    font-size: $font-size-md;
+    font-weight: $font-weight-regular;
+    line-height: 1.6;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-md;
+    padding-top: $spacing-lg;
+  }
+
+  &__item {
+    min-width: 0;
+    padding: $spacing-md;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+
+    &:hover {
+      border-color: $color-primary;
+      box-shadow: $shadow-sm;
+      transform: translateY(-1px);
+    }
+  }
+
+  &__label {
+    margin: 0 0 $spacing-sm;
+    color: $color-text;
+    font-family: $font-family-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    line-height: 1.4;
+  }
+
+  &__value {
+    color: $color-gray-600;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    p {
+      margin: 0 0 $spacing-sm;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    strong {
+      color: $color-text;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: $spacing-lg;
+      color: $color-gray-600;
+
+      &::before {
+        position: absolute;
+        top: 0.65em;
+        left: $spacing-sm;
+        width: 5px;
+        height: 5px;
+        background-color: $color-primary;
+        border-radius: $radius-full;
+        content: "";
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__ifta {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__ifta-status {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
+    color: $color-gray-700;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    line-height: 1.4;
+    background-color: rgba($color-primary, 0.1);
+    border-radius: $radius-full;
+
+    &--required {
+      color: $color-primary;
+      background-color: rgba($color-primary, 0.12);
+    }
+
+    &--not-required {
+      color: $color-gray-600;
+      background-color: $color-gray-200;
+    }
+  }
+
+  &__notes {
+    padding: $spacing-sm $spacing-md;
+    color: $color-gray-600;
+    font-size: $font-size-sm;
+    background-color: $color-white;
+    border-left: 3px solid $color-secondary;
+    border-radius: 0 $radius-sm $radius-sm 0;
+  }
+
+  &--empty {
+    display: none;
+  }
+}
+
+@media (max-width: $breakpoint-md - 1px) {
+  .general-content-layout {
+    padding: $spacing-md;
+    border-radius: $radius-md;
+
+    &__header {
+      padding-bottom: $spacing-md;
+    }
+
+    &__title {
+      font-size: $font-size-xl;
+    }
+
+    &__body {
+      grid-template-columns: 1fr;
+      padding-top: $spacing-md;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm - 1px) {
+  .general-content-layout {
+    padding: $spacing-sm;
+    border: 0;
+    box-shadow: none;
+
+    &__item {
+      padding: $spacing-md;
+    }
+
+    &__description,
+    &__value {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .general-content-layout__item {
+    transition: none;
+  }
+}
