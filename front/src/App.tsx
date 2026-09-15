@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 
 import DocsLayout from "./layouts/DocsLayout";
-import GeneralTrinity from "./pages/trinity/GeneralTrinity";
+import GeneralTrinity from "./pages/trinity/General/GeneralTrinity";
 
 function Home() {
   return (

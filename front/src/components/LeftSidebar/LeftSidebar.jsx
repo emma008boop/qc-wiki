@@ -5,7 +5,7 @@ function LeftSidebar() {
   const menuData = [
     {
       title: "Rater QC",
-      defaultOpen: true,
+      defaultOpen: false,
       links: [
         {
           label: "Documentación",
@@ -23,12 +23,12 @@ function LeftSidebar() {
       ],
     },
     {
-      title: "Proyecto",
+      title: "Trinity",
       defaultOpen: false,
       links: [
         {
           label: "Arquitectura",
-          href: "/architecture",
+          href: "/general-trinity",
         },
         {
           label: "API",

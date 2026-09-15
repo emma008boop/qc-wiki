@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import "./GeneralContentLayout.scss"
 const isDefined = (value) =>
   value !== undefined && value !== null && value !== "";
