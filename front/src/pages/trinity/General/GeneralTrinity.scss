@@ -1,0 +1,73 @@
+@use "./styles/variables" as *;
+
+.general-trinity {
+  min-height: 100vh;
+  padding: $spacing-xl $spacing-lg;
+  background-color: $color-background;
+
+  &__container {
+    width: 100%;
+    max-width: $container-max-width;
+    margin: 0 auto;
+  }
+
+  &__header {
+    max-width: 760px;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__eyebrow {
+    margin: 0 0 $spacing-sm;
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0 0 $spacing-md;
+    color: $color-text;
+    font-family: $font-family-heading;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    line-height: 1.15;
+  }
+
+  &__description {
+    max-width: 680px;
+    margin: 0;
+    color: $color-text-muted;
+    font-size: $font-size-lg;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: $breakpoint-md - 1px) {
+  .general-trinity {
+    padding: $spacing-lg $spacing-md;
+
+    &__header {
+      margin-bottom: $spacing-lg;
+    }
+
+    &__title {
+      font-size: $font-size-3xl;
+    }
+
+    &__description {
+      font-size: $font-size-md;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm - 1px) {
+  .general-trinity {
+    padding: $spacing-lg $spacing-sm;
+
+    &__title {
+      font-size: $font-size-2xl;
+    }
+  }
+}
